@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="" alt="Capa" title="Capa">
+  <img src="./src/assets/capa.png" alt="Capa" title="Capa">
 </h1>
 
 # GitHub Wiki
