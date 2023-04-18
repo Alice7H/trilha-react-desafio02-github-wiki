@@ -1,21 +1,21 @@
 import { useState } from 'react';
-import { Input } from '../../components/Input';
-import { ItemRepo } from '../../components/ItemRepo';
-import { Button } from '../../components/Button';
+import { InputLabel, ItemRepo, Button, Image } from '../../components';
 import { Container } from './styles';
 import { api } from '../../services/api';
 import gitLogo from '../../assets/github.png'
+import toast, { Toaster } from 'react-hot-toast';
 
 const App = () => {
   const [currentRepo, setCurrentRepo] = useState('');
   const [repos, setRepos] = useState([]);
 
   const handleSearchRepo = async () => {
-    const { data } = await api.get(`repos/${currentRepo}`);
-    if (data.id) {
+    try {
+      const { data } = await api.get(`repos/${currentRepo}`);
       setRepos(prev => [...prev, data]);
       setCurrentRepo('');
-      return;
+    } catch (error) {
+      toast.error('Requisição não encontrada');
     }
   }
 
@@ -26,8 +26,15 @@ const App = () => {
 
   return (
     <Container>
-      <img src={gitLogo} alt="github logo" width={72} height={72} />
-      <Input value={currentRepo} onChange={(e) => setCurrentRepo(e.target.value)} />
+      <Image src={gitLogo} alt="github logo" />
+      <Toaster position="top-center" />
+      <InputLabel
+        value={currentRepo}
+        id='input'
+        onChange={(e) => setCurrentRepo(e.target.value)}
+        placeholder="nome-usuário/nome-repositório"
+        labelText="Informe o nome do usuário e repositório:"
+      />
       <Button onClick={handleSearchRepo} />
       {
         repos && repos.map(repo =>
