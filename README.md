@@ -1,8 +1,6 @@
-<h1 align="center">
-  <img src="./src/assets/capa.png" alt="Capa" title="Capa">
-</h1>
-
 # GitHub Wiki
+
+![Screenshot](./src/assets/capa.png)
 
 Neste projeto, criamos uma Wiki para salvar alguns repositórios. Para isso, usamos o consumo da API do GitHub para listar os conjuntos de interesse.
 
@@ -15,3 +13,6 @@ Ex: `nome-do-usuario/nome-do-projeto`
 - Mudanças na estilização da lista de repositórios.
 - Troca de tag `a` por `button`, por questões semânticas
 - Remoção da altura no `Container` da página App.
+- Adição de uma notificação de erro, caso a busca não seja encontrada
+- Adição de componente para a imagem
+- Modificação no componente de Input para InputLabel
